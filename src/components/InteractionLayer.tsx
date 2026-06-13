@@ -103,6 +103,17 @@ const InteractionLayer: React.FC = () => {
     const updateCursor = (e: MouseEvent) => {
       cursor.style.left = `${e.clientX - 10}px`;
       cursor.style.top = `${e.clientY - 10}px`;
+
+      const target = e.target as HTMLElement;
+      if (target.closest('button, a, .nav-link')) {
+        cursor.style.transform = 'scale(2.5)';
+        cursor.style.backgroundColor = 'rgba(122, 19, 40, 0.2)';
+        cursor.style.borderColor = 'rgba(122, 19, 40, 0.5)';
+      } else {
+        cursor.style.transform = 'scale(1)';
+        cursor.style.backgroundColor = 'transparent';
+        cursor.style.borderColor = 'rgba(255,255,255,0.3)';
+      }
     };
     window.addEventListener('mousemove', updateCursor);
 
